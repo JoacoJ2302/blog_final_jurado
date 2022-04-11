@@ -5,15 +5,11 @@ from ckeditor.fields import RichTextField
 
 class Post(models.Model):
     titulo = models.CharField('titulo', max_length=500, null=False, blank=False)
-    subtitulo = models.CharField(
-        'subtitulo', max_length=500, null=False, blank=False)
+    subtitulo = models.CharField('subtitulo', max_length=500, null=False, blank=False)
     contenido = RichTextField('contenido', null=False, blank=False)
-    imagen = models.ImageField(
-        upload_to='imagenes_post', null=True, blank=True)
+    imagen = models.ImageField(upload_to='imagenes_post', null=True, blank=True)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
-    # Agrega fecha de origen del post:
     fecha_publicacion = models.DateTimeField(auto_now_add=True)
-    # Agrega fecha y actualiza segun la fecha de la edicion:
     fecha_edicion = models.DateTimeField(auto_now=True)
     likes = models.ManyToManyField(User, related_name='likes_posts')
 

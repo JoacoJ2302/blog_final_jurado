@@ -1,4 +1,3 @@
-from telnetlib import LOGOUT
 from django.urls import path
 from accounts import views
 from django.contrib.auth.views import LogoutView

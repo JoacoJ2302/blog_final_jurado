@@ -3,7 +3,6 @@ from posts import views
 
 urlpatterns = [
     path('', views.inicio, name="inicio"),
-    path('about_me/', views.about_me, name='about_me'),
     path('ListaPosts/', views.ListaPosts.as_view(), name='ListaPosts'),
     path('verPost/<pk>/', views.VerPost.as_view(), name='verPost'),
     path('CrearPost/', views.CrearPost.as_view(), name='CrearPost'),
