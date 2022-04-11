@@ -63,6 +63,9 @@
                             <a class="dropdown-item" href="{% url 'PostsConMeGustaPropios' %}">Mi actividad | Me Gusta</a>
                           </li>
                           <li>
+                            <a class="dropdown-item" href="{% url 'MiPerfil' %}">Mi Perfil</a>
+                          </li>
+                          <li>
                             <a class="dropdown-item" href="{% url 'EditarPerfil' %}">Editar Perfil</a>
                           </li>
                           <li>
@@ -113,12 +116,12 @@ height: 70vh;
 {% endblock BackgroundImage %}
 
 <!-- Page content-->
-    {% block blockPosts %}
-    {% endblock blockPosts %}
+    {% block Posts %}
+    {% endblock Posts %}
 
 <!-- Footer-->
     <footer class="py-5 bg-dark">
-        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; MotherBlog 2022</p></div>
     </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

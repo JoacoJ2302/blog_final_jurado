@@ -43,6 +43,10 @@ def login_request(request):
         return render(request, "accounts/login.html", {'form': form})
 
 
+def mi_perfil (request):
+    return render (request, "accounts/mi_perfil.html")
+
+
 def editarPerfil(request):
 
     usuario = request.user
