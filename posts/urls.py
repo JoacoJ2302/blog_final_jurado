@@ -3,12 +3,12 @@ from posts import views
 
 urlpatterns = [
     path('', views.inicio, name="inicio"),
-    path('aboutUs/', views.aboutUs, name='AboutUs'),
-    path('postLista/', views.ListaPosts.as_view(), name='postLista'),
+    path('about_me/', views.about_me, name='about_me'),
+    path('ListaPosts/', views.ListaPosts.as_view(), name='ListaPosts'),
     path('verPost/<pk>/', views.VerPost.as_view(), name='verPost'),
-    path('crearPost/', views.CrearPost.as_view(), name='crearPost'),
-    path('editarPost/<pk>/', views.UpdatePost.as_view(), name='editarPost'),
-    path('borrarPost/<pk>/', views.BorrarPost.as_view(), name='borrarPost'),
+    path('CrearPost/', views.CrearPost.as_view(), name='CrearPost'),
+    path('EditarPost/<pk>/', views.UpdatePost.as_view(), name='EditarPost'),
+    path('BorrarPost/<pk>/', views.BorrarPost.as_view(), name='BorrarPost'),
     path('verPost/<pk>/comentar/',views.AgregarComentario.as_view(), name='comentar'),
-    path('like/<pk>', views.meGusta, name='likePost'),
+    path('like/<pk>', views.me_gusta, name='likePost'),
 ]

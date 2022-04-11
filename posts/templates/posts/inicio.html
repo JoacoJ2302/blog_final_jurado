@@ -20,14 +20,13 @@
 
 
 {% block bienvenido %}
-<h1 class="fw-bolder">¡Bienvenido a Tercer Tiempo!</h1>
-<p class="lead mb-0">Si 90 minutos no son suficientes para vos, entonces este es tu lugar para seguir debatiendo sobre fútbol argentino</p>
+<h1 class="fw-bolder">¡Bienvenido a mi blog!</h1>
 {% endblock bienvenido %}
 
 {% block editNavBar %}
   {% if not request.user.is_authenticated  %}
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'AboutUs' %}">Acerca de nosotros</a>
+      <a class="nav-link" href="{% url 'about_me' %}">Acerca de mi</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{% url 'Login' %}">Ingresar</a>
@@ -35,7 +34,7 @@
   {% endif %} 
   {% if request.user.is_authenticated %}
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'AboutUs' %}">Acerca de nosotros</a>
+      <a class="nav-link" href="{% url 'about_me' %}">Acerca de mi</a>
     </li>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav">
@@ -44,9 +43,11 @@
             Hola, {{request.user}}
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            {% if perms.posts.add_post %}
             <li>
-              <a class="dropdown-item" href="{% url 'postLista' %}">Administrar Posts</a>
+              <a class="dropdown-item" href="{% url 'ListaPosts' %}">Administrar Posts</a>
             </li>
+            {% endif %}
             <li>
               <a class="dropdown-item" href="{% url 'PostsConMeGustaPropios' %}">Mi actividad | Me Gusta</a>
             </li>

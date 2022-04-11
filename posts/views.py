@@ -53,7 +53,7 @@ class CrearPost(CreateView):
 
     model = Post
     form_class= PostForm    
-    success_url = "/posts/postLista"
+    success_url = "/posts/ListaPosts"
 
     def get_context_data(self, **kwargs):
         contexto = super().get_context_data(**kwargs)
@@ -65,7 +65,7 @@ class UpdatePost(UpdateView):
 
     model = Post
     form_class= PostForm 
-    success_url = "/posts/postLista"
+    success_url = "/posts/ListaPosts"
 
     def get_context_data(self, **kwargs):
         contexto = super().get_context_data(**kwargs)
@@ -76,7 +76,7 @@ class UpdatePost(UpdateView):
 class BorrarPost(DeleteView):
 
     model = Post 
-    success_url = "/posts/postLista"
+    success_url = "/posts/ListaPosts"
 
 class AgregarComentario(CreateView):
     
@@ -89,7 +89,7 @@ class AgregarComentario(CreateView):
         form.instance.autor = self.request.user
         return super().form_valid(form)
     
-    success_url = "/"
+    success_url = "/posts"
 
     def get_context_data(self, **kwargs):
         contexto = super().get_context_data(**kwargs)
@@ -99,11 +99,10 @@ class AgregarComentario(CreateView):
         return contexto
 
 
-def meGusta(request,pk):
+def me_gusta(request,pk):
         post = get_object_or_404(Post, id=request.POST.get('post_id'))
         post.likes.add(request.user)
         return HttpResponseRedirect(reverse('verPost', args=pk))
 
-def aboutUs(request):
-    return render(request,'posts/about_us.html')
+
 
