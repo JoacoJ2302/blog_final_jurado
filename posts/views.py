@@ -1,14 +1,15 @@
 #Funcionalidades de los post
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-from posts.models import Post, Comentario
+from .models import Post, Comentario
 from django.db.models import Q
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
-from posts.forms import ComentarioForm, PostForm
+from .forms import ComentarioForm, PostForm
 from django.core.paginator import Paginator, EmptyPage
 from django.http import HttpResponseRedirect
+
 
 def inicio(request):
     queryset = request.GET.get("buscar")

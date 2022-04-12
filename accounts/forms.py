@@ -1,9 +1,6 @@
-from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-
-
 
 
 class CreateUserForm(UserCreationForm):
@@ -18,6 +15,7 @@ class UserRegisterForm(UserCreationForm):
     password2 = forms.CharField(label='Repetir la contraseña',widget=forms.PasswordInput)
 
 class UserEditForm(UserCreationForm):
+    username = forms.CharField()
     email = forms.EmailField(label='Modificar E-mail')
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repetir la contraseña', widget=forms.PasswordInput) 

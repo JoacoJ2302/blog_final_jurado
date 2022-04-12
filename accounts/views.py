@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate
 from accounts.forms import UserRegisterForm, UserEditForm
 from posts.models import Post
 
-# Register
+
 def register(request):
     
     if request.method == 'POST':
@@ -20,7 +20,6 @@ def register(request):
         return render(request, 'accounts/registro.html', {"form": form})
 
 
-# Login
 def login_request(request):
 
     if request.user.is_authenticated:
@@ -55,6 +54,7 @@ def editarPerfil(request):
         miFormulario = UserEditForm(request.POST)
         if miFormulario.is_valid(): 
             informacion = miFormulario.cleaned_data
+            usuario.username = informacion ['username']
             usuario.email = informacion['email']
             usuario.password1 = informacion['password1']
             usuario.password2 = informacion['password1']
@@ -65,6 +65,7 @@ def editarPerfil(request):
     else:
         miFormulario = UserEditForm(
             initial={
+                    'username': usuario.username,
                     'email': usuario.email, 
                     'first_name': usuario.first_name, 
                     'last_name': usuario.last_name
