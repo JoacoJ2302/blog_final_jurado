@@ -11,8 +11,8 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
-            user = form.save()
-            return render(request, 'accounts/bienvenido.html', {"mensaje": f"El usuario de {username} se ha creado con éxito"})
+            form.save()
+            return render(request, 'accounts/bienvenido.html', {"mensaje": f"El usuario {username} se ha creado con éxito"})
         else:
             return render(request, 'accounts/bienvenido.html', {"mensaje": "El usuario no se ha creado"})  
     else:
@@ -37,7 +37,7 @@ def login_request(request):
                 else:
                     return render(request, "accounts/login.html", {"mensaje": "Datos incorrectos"})
             else:
-                return render(request, "accounts/login.html", {"mensaje": "Error en el formulario"})
+                return render(request, "accounts/login.html", {"mensaje": "El usuario no existe"})
         form = AuthenticationForm()
         return render(request, "accounts/login.html", {'form': form})
 
