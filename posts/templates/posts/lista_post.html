@@ -5,7 +5,7 @@
   <div class="container">
     {% block Posts %}
         <h2>Mis Posts:<hr></h2>
-        <h4><a class="btn btn-primary" href="{% url 'CrearPost' %}" role="button">Publica algo nuevo</a></h4>
+        <h4><a class="btn btn-primary" href="{% url 'create_post' %}" role="button">Publica algo nuevo</a></h4>
         <div class="table-responsive">
           <table class="table table-stripped">
             <thead>
@@ -24,7 +24,7 @@
                   <td>{{ post.autor }}</td>
                   <td>{{ post.fecha_publicacion }}</td>
                   <td><span><i class="fa-regular fa-thumbs-up"></i> {{ post.likes.count }}</span> <span><i class="fa-regular fa-comments"></i>{{ post.get_comentarios_count }}</span></td>
-                  <td><a class="btn btn-info" href="{% url 'verPost' post.id %}" role="button">Ver</a> <a class="btn btn-secondary" href="{% url 'EditarPost' post.id %}" role="button">Editar</a> <a class="btn btn-danger" href="{% url 'BorrarPost' post.id %}" role="button">Eliminar</a></td>
+                  <td><a class="btn btn-info" href="{% url 'ver_post' post.id %}" role="button">Ver</a> <a class="btn btn-secondary" href="{% url 'update_post' post.id %}" role="button">Editar</a> <a class="btn btn-danger" href="{% url 'delete_post' post.id %}" role="button">Eliminar</a></td>
                 </tr>
               {% endfor %}
             </tbody>

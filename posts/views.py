@@ -112,4 +112,4 @@ class AgregarComentario(CreateView):
 def me_gusta(request,pk):
         post = get_object_or_404(Post, id=request.POST.get('post_id'))
         post.likes.add(request.user)
-        return HttpResponseRedirect(reverse('verPost', args=pk))
+        return HttpResponseRedirect(reverse('ver_post', args=pk))

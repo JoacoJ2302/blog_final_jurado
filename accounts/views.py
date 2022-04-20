@@ -46,7 +46,7 @@ def mi_perfil (request):
     return render (request, "accounts/mi_perfil.html")
 
 @login_required
-def editarPerfil(request):
+def editar_perfil(request):
 
     usuario = request.user
 
@@ -74,7 +74,7 @@ def editarPerfil(request):
     return render(request, "accounts/editar_perfil.html", {"miFormulario": miFormulario, "usuario": usuario})
 
 
-def postsConMeGustaPropios(request):
+def posts_con_me_gusta_propios(request):
     current_user = request.user.id
     posts = Post.objects.filter(likes__id=current_user)
     return render(request, 'accounts/posts_con_megusta.html', {"posts": posts})

@@ -15,7 +15,7 @@
               <p class="card-text mb-auto">{{ p.subtitulo }}</p>
               <span><i class="fa-regular fa-thumbs-up"></i> {{ p.likes.count }}</span>
               <span><i class="fa-regular fa-comments"></i> {{ p.get_comentarios_count }}</span>
-              <a href="{% url 'verPost' p.id %}">Ver post</a>
+              <a href="{% url 'ver_post' p.id %}">Ver post</a>
             </div>
             <div class="col-auto d-none d-lg-block">
             <img src="{{ p.imagen.url }}" width="250" height="250">
@@ -24,5 +24,7 @@
         </div>    
       </div> 
     {% endfor %} 
+  {% else %}
+  <h2>No le diste Me Gusta a ningun post aun!</h2>
   {% endif %}
 {% endblock Posts %}

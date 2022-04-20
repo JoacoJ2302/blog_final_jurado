@@ -22,7 +22,7 @@
         <p class="card-text mb-auto">{{ post.subtitulo }}</p>
         <span><i class="fa-regular fa-thumbs-up"></i> {{ post.likes.count }}</span>
         <span><i class="fa-regular fa-comments"></i> {{ post.get_comentarios_count }}</span>
-        <a href="{% url 'verPost' post.id %}">Ver post</a>
+        <a href="{% url 'ver_post' post.id %}">Ver post</a>
       </div>
       <div class="col-auto d-none d-lg-block">
           <img src="{{ post.imagen.url }}" width="250" height="250">

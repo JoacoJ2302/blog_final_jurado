@@ -57,11 +57,11 @@
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                           {% if perms.posts.add_post %}
                           <li>
-                              <a class="dropdown-item" href="{% url 'ListaPosts' %}">Administrar Posts</a>
+                              <a class="dropdown-item" href="{% url 'lista_posts' %}">Administrar Posts</a>
                             </li>
                           {% endif %}
                           <li>
-                            <a class="dropdown-item" href="{% url 'PostsConMeGustaPropios' %}">Mis Me Gusta</a>
+                            <a class="dropdown-item" href="{% url 'posts_con_me_gusta_propios' %}">Mis Me Gusta</a>
                           </li>
                           <li>
                             <a class="dropdown-item" href="{% url 'MiPerfil' %}">Mi Perfil</a>

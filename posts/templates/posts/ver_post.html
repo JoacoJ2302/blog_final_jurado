@@ -32,7 +32,7 @@
             </section>
             </article>
             {% if user.is_authenticated %}
-              <form action="{% url 'likePost' post.pk %}" method="POST">
+              <form action="{% url 'like_post' post.pk %}" method="POST">
               {% csrf_token %}
               <h4>¿Te gusto el post?<button type="submit"  class="fa-regular fa-thumbs-up fa-lg", name="post_id", value="{{ object.id }}"></button></h4>
               </form>
