@@ -7,7 +7,7 @@ urlpatterns = [
     path('login', views.login_request, name ="Login"),
     path('register', views.register, name ="Register"),
     path('logout', LogoutView.as_view(template_name='accounts/logout.html'), name ="Logout"),
-    path('editarPerfil',views.editarPerfil,name='EditarPerfil'),
-    path('misPostsConMeGusta',views.postsConMeGustaPropios,name="PostsConMeGustaPropios"),
+    path('editar_perfil',views.editarPerfil,name='EditarPerfil'),
+    path('mis_posts_con_me_gusta',views.postsConMeGustaPropios,name="PostsConMeGustaPropios"),
     path('mi_perfil/', views.mi_perfil, name='MiPerfil'),
 ]
