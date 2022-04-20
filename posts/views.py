@@ -55,7 +55,7 @@ class CrearPost(CreateView):
 
     model = Post
     form_class= PostForm    
-    success_url = "/posts/ListaPosts"
+    success_url = "/posts/lista_posts"
 
     def get_context_data(self, **kwargs):
         contexto = super().get_context_data(**kwargs)
@@ -69,7 +69,7 @@ class UpdatePost(UpdateView):
 
     model = Post
     form_class= PostForm 
-    success_url = "/posts/ListaPosts"
+    success_url = "/posts/lista_posts"
 
     def get_context_data(self, **kwargs):
         contexto = super().get_context_data(**kwargs)
@@ -82,7 +82,7 @@ class UpdatePost(UpdateView):
 class BorrarPost(DeleteView):
 
     model = Post 
-    success_url = "/posts/ListaPosts"
+    success_url = "/posts/lista_posts"
 
 
 class AgregarComentario(CreateView):
