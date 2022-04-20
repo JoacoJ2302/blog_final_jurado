@@ -17,7 +17,10 @@ def inicio(request):
             Q(titulo__icontains = queryset) |
             Q(subtitulo__icontains = queryset)
         ).distinct()
-        return render(request, 'posts/inicio.html', {'posts': posts})
+        if posts:
+            return render(request, 'posts/inicio.html', {'posts': posts})
+        else:
+            return render(request, 'posts/inicio.html', {'posts': posts, 'mensaje': 'No se encontraron posts'})
     else:
         todos_los_posts = Post.objects.all().order_by('-fecha_publicacion')
         mostrar = Paginator(todos_los_posts, 3)
