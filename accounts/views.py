@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from accounts.forms import UserRegisterForm, UserEditForm
 from posts.models import Post
-
+from django.contrib.auth.decorators import login_required
 
 def register(request):
     
@@ -45,7 +45,7 @@ def login_request(request):
 def mi_perfil (request):
     return render (request, "accounts/mi_perfil.html")
 
-
+@login_required
 def editarPerfil(request):
 
     usuario = request.user
