@@ -19,25 +19,26 @@
             margin-left: 20px;
             }
     </style>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
+{% block NavBar %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
             <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
 <!-- Barra Busqueda -->
-            <div class="row" style="width: 400px">
-                <div class="col-md-12 search">
-                    <form method="get">
-                        <div id="custom-search-input">
-                            <div class="input-group col-md-12">
-                                <input type="text" class="form-control" style="height: 29px" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
-                                <span class="input-group-list">
-                                <i class="icon icon-search"></i>
-                                <button type="submit" class="boton btn-success">Buscar</button>
-                                </span>
-                            </div>
-                        </div>
-                    </form>
+<div class="row" style="width: 400px">
+          <div class="col-md-12 search">
+            <form method="get">
+              <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                  <input type="text" class="form-control" style="height: 29px" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+                  <span class="input-group-list">
+                    <i class="icon icon-search"></i>
+                    <button type="submit" class="boton btn-success">Buscar</button>
+                  </span>
                 </div>
-            </div>
+              </div>
+            </form>
+          </div>
+        </div>
 
 <!-- NavBar -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -83,8 +84,9 @@
             {% block loggedIn %}
             {% endblock loggedIn %}
         </div>
-    </nav>
-
+      </nav>
+{% endblock NavBar %}
+      
 <!-- Page header with logo and tagline-->
     <header>
         <!-- Cartel Bienvenido -->
