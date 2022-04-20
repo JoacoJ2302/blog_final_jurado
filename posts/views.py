@@ -1,4 +1,3 @@
-#Funcionalidades de los post
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from .models import Post, Comentario
@@ -20,8 +19,8 @@ def inicio(request):
         ).distinct()
         return render(request, 'posts/inicio.html', {'posts': posts})
     else:
-        todosLosPosts = Post.objects.all().order_by('-fecha_publicacion')
-        mostrar = Paginator(todosLosPosts, 3)
+        todos_los_posts = Post.objects.all().order_by('-fecha_publicacion')
+        mostrar = Paginator(todos_los_posts, 3)
         pagina_num = request.GET.get('pagina', 1)
         try:
             posts = mostrar.page(pagina_num)
@@ -38,6 +37,7 @@ class ListaPosts(ListView):
     template_name= "posts/lista_post.html"
     ordering = ['-fecha_publicacion']
 
+
 class VerPost(DetailView):
     
     model = Post
@@ -49,6 +49,7 @@ class VerPost(DetailView):
         total_likes = numero.total_likes()
         contexto['total_likes']= total_likes
         return contexto
+
 
 class CrearPost(CreateView):
 
@@ -62,6 +63,8 @@ class CrearPost(CreateView):
             'tipo_template': 'Publicar'
         })
         return contexto
+    
+
 class UpdatePost(UpdateView):
 
     model = Post
@@ -74,10 +77,13 @@ class UpdatePost(UpdateView):
             'tipo_template': 'Editar' 
         })
         return contexto
+
+
 class BorrarPost(DeleteView):
 
     model = Post 
     success_url = "/posts/ListaPosts"
+
 
 class AgregarComentario(CreateView):
     
@@ -104,6 +110,3 @@ def me_gusta(request,pk):
         post = get_object_or_404(Post, id=request.POST.get('post_id'))
         post.likes.add(request.user)
         return HttpResponseRedirect(reverse('verPost', args=pk))
-
-
-
