@@ -17,7 +17,6 @@ def buscar_url_avatar(user):
 
 def inicio(request):
     
-    avatares = Avatar.objects.filter(user=request.user.id)
     queryset = request.GET.get("buscar")
     
     if queryset:
