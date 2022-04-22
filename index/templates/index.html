@@ -52,7 +52,7 @@
                       <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Hola, {{request.user}}
+                            Hola <img src="{{avatar}}" alt="Avatar" height='30'>
                           </a>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                           {% if perms.posts.add_post %}

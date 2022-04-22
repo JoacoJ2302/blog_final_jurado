@@ -8,19 +8,27 @@ from django.views.generic.edit import DeleteView, CreateView, UpdateView
 from .forms import ComentarioForm, PostForm
 from django.core.paginator import Paginator, EmptyPage
 from django.http import HttpResponseRedirect
+from accounts.models import Avatar
+
+
+def buscar_url_avatar(user):
+    return Avatar.objects.filter(user=user)[0].imagen.url
 
 
 def inicio(request):
+    
+    avatares = Avatar.objects.filter(user=request.user.id)
     queryset = request.GET.get("buscar")
+    
     if queryset:
         posts = Post.objects.filter(
             Q(titulo__icontains = queryset) |
             Q(subtitulo__icontains = queryset)
         ).distinct()
         if posts:
-            return render(request, 'posts/inicio.html', {'posts': posts})
+            return render(request, 'posts/inicio.html', {'posts': posts, 'mensaje': 'Se encontraron estos posts', 'avatar':buscar_url_avatar(request.user)})
         else:
-            return render(request, 'posts/inicio.html', {'posts': posts, 'mensaje': 'No se encontraron posts'})
+            return render(request, 'posts/inicio.html', {'posts': posts, 'mensaje': 'No se encontraron posts', 'avatar':buscar_url_avatar(request.user)})
     else:
         todos_los_posts = Post.objects.all().order_by('-fecha_publicacion')
         mostrar = Paginator(todos_los_posts, 3)
@@ -31,7 +39,7 @@ def inicio(request):
         except EmptyPage:
             posts = mostrar.page(1)
             numeros = "n" * posts.paginator.num_pages
-        return render(request, 'posts/inicio.html', {'posts': posts, 'numeros': numeros})
+        return render(request, 'posts/inicio.html', {'posts': posts, 'numeros': numeros, 'avatar':buscar_url_avatar(request.user)})
 
 
 class ListaPosts(ListView):
