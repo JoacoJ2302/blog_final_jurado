@@ -25,9 +25,15 @@ def inicio(request):
             Q(subtitulo__icontains = queryset)
         ).distinct()
         if posts:
-            return render(request, 'posts/inicio.html', {'posts': posts, 'mensaje': 'Se encontraron estos posts', 'avatar':buscar_url_avatar(request.user)})
+            try:
+                return render(request, 'posts/inicio.html', {'posts': posts, 'mensaje': 'Se encontraron estos posts', 'avatar':buscar_url_avatar(request.user)})
+            except:
+                return render(request, 'posts/inicio.html', {'posts': posts, 'mensaje': 'Se encontraron estos posts'})                
         else:
-            return render(request, 'posts/inicio.html', {'posts': posts, 'mensaje': 'No se encontraron posts', 'avatar':buscar_url_avatar(request.user)})
+            try:
+                return render(request, 'posts/inicio.html', {'posts': posts, 'mensaje': 'No se encontraron posts', 'avatar':buscar_url_avatar(request.user)})
+            except:
+                return render(request, 'posts/inicio.html', {'posts': posts, 'mensaje': 'No se encontraron posts'})                
     else:
         todos_los_posts = Post.objects.all().order_by('-fecha_publicacion')
         mostrar = Paginator(todos_los_posts, 3)
@@ -38,8 +44,10 @@ def inicio(request):
         except EmptyPage:
             posts = mostrar.page(1)
             numeros = "n" * posts.paginator.num_pages
-        return render(request, 'posts/inicio.html', {'posts': posts, 'numeros': numeros, 'avatar':buscar_url_avatar(request.user)})
-
+        try:
+            return render(request, 'posts/inicio.html', {'posts': posts, 'numeros': numeros, 'avatar':buscar_url_avatar(request.user)})
+        except:
+            return render(request, 'posts/inicio.html', {'posts': posts, 'numeros': numeros})
 
 class ListaPosts(ListView):
 
