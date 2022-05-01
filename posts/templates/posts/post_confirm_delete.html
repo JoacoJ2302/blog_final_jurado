@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 
 
-{% block Posts %}
+{% block posts %}
     {% if user.is_authenticated %}
         <div class="container">
             <h1>¿Seguro quieres eliminar este post?</h1>
@@ -16,5 +16,5 @@
         Debes iniciar sesion para realizar cambios. <a href="{% url 'Login' %}" class="alert-link">Iniciar Sesión</a>. Ahí encontraras el boton para poder registrarte tambien.
     </div>
         {% endif %}
-{% endblock Posts %}
+{% endblock posts %}
 

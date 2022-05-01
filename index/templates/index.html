@@ -19,7 +19,7 @@
             margin-left: 20px;
             }
     </style>
-{% block NavBar %}
+{% block nav_bar %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
             <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
@@ -81,11 +81,11 @@
               </ul>
             </div>
 
-            {% block loggedIn %}
-            {% endblock loggedIn %}
+            {% block logged_in %}
+            {% endblock logged_in %}
         </div>
       </nav>
-{% endblock NavBar %}
+{% endblock nav_bar %}
       
 <!-- Page header with logo and tagline-->
     <header>
@@ -98,13 +98,13 @@
                 </div>
             </div>
         </div>        
-        {% block logInLogOut %}
-        {% endblock logInLogOut %}    
+        {% block log_in_log_out %}
+        {% endblock log_in_log_out %}    
     </header>
 
 <!-- Page content-->
-    {% block Posts %}
-    {% endblock Posts %}
+    {% block posts %}
+    {% endblock posts %}
 
 <!-- Footer-->
     <footer class="py-5 bg-dark">

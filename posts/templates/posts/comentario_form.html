@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 
 
-{% block logInLogOut %}
+{% block log_in_log_out %}
 {% if user.is_authenticated %}
 <body>
   <div class="container h-100">
@@ -32,4 +32,4 @@
     Inicia sesión para poder comentar algo!. <a href="{% url 'Login' %}" class="alert-link">Iniciar Sesión</a>. Ahí encontraras el boton para poder registrarte tambien.
   </div>
 {% endif %}
-{% endblock logInLogOut %}
+{% endblock log_in_log_out %}

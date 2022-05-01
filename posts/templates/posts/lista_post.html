@@ -3,7 +3,7 @@
 
 {% if user.is_authenticated %}
   <div class="container">
-    {% block Posts %}
+    {% block posts %}
         <h2>Mis Posts:<hr></h2>
         <h4><a class="btn btn-primary" href="{% url 'create_post' %}" role="button">Publica algo nuevo</a></h4>
         <div class="table-responsive">
@@ -29,7 +29,7 @@
               {% endfor %}
             </tbody>
           </table>
-    {% endblock Posts %}
+    {% endblock posts %}
   </div>
 {% else %}
 <div class="alert alert-warning" role="alert">
