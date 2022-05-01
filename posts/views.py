@@ -70,7 +70,7 @@ class VerPost(DetailView):
         return contexto
 
 
-class CrearPost(CreateView):
+class CreatePost(CreateView):
 
     model = Post
     form_class= PostForm    
@@ -98,7 +98,7 @@ class UpdatePost(LoginRequiredMixin, UpdateView):
         return contexto
 
 
-class BorrarPost(LoginRequiredMixin, DeleteView):
+class DeletePost(LoginRequiredMixin, DeleteView):
 
     model = Post 
     success_url = "/posts/lista_posts"
