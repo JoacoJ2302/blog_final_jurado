@@ -21,3 +21,4 @@ class UserEditForm(UserCreationForm):
     password2 = forms.CharField(label='Repetir la contraseña', widget=forms.PasswordInput) 
     first_name = forms.CharField(label='Nombre')
     last_name = forms.CharField(label='Apellido')
+    avatar = forms.ImageField(required=False)

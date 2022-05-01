@@ -5,7 +5,7 @@ from accounts.forms import UserRegisterForm, UserEditForm
 from posts.models import Post
 from django.contrib.auth.decorators import login_required
 from posts.views import buscar_url_avatar
-
+from .models import Avatar
 
 def register(request):
     
@@ -50,30 +50,31 @@ def mi_perfil (request):
 @login_required
 def editar_perfil(request):
 
-    usuario = request.user
+    user_extension_logued, _ = Avatar.objects.get_or_create(user=request.user)
 
     if request.method == 'POST':
-        miFormulario = UserEditForm(request.POST)
+        miFormulario = UserEditForm(request.POST, request.FILES)
         if miFormulario.is_valid(): 
             informacion = miFormulario.cleaned_data
-            usuario.username = informacion ['username']
-            usuario.email = informacion['email']
-            usuario.password1 = informacion['password1']
-            usuario.password2 = informacion['password1']
-            usuario.first_name = informacion['first_name']
-            usuario.last_name = informacion['last_name']
-            usuario.save()
+            request.user.username = informacion ['username']
+            request.user.email = informacion['email']
+            request.user.password1 = informacion['password1']
+            request.user.password2 = informacion['password1']
+            request.user.first_name = informacion['first_name']
+            request.user.last_name = informacion['last_name']
+            user_extension_logued.avatar = informacion['avatar']
+            request.user.save()
             return render(request, "accounts/bienvenido.html", {"mensaje": "Datos de perfil modificados correctamente"})
     else:
         miFormulario = UserEditForm(
             initial={
-                    'username': usuario.username,
-                    'email': usuario.email, 
-                    'first_name': usuario.first_name, 
-                    'last_name': usuario.last_name
+                    'username': request.user.username,
+                    'email': request.user.email, 
+                    'first_name': request.user.first_name, 
+                    'last_name': request.user.last_name
                     }
             )
-    return render(request, "accounts/editar_perfil.html", {"miFormulario": miFormulario, "usuario": usuario})
+    return render(request, "accounts/editar_perfil.html", {"miFormulario": miFormulario})
 
 
 def posts_con_me_gusta_propios(request):
