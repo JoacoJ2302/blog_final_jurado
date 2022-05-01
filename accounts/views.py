@@ -45,7 +45,7 @@ def login_request(request):
 
 
 def mi_perfil (request):
-    return render (request, "accounts/mi_perfil.html", {'avatar':buscar_url_avatar(request.user)})
+    return render (request, "accounts/mi_perfil.html") 
 
 @login_required
 def editar_perfil(request):
@@ -62,9 +62,13 @@ def editar_perfil(request):
             request.user.password2 = informacion['password1']
             request.user.first_name = informacion['first_name']
             request.user.last_name = informacion['last_name']
-            user_extension_logued.avatar = informacion['avatar']
+            user_extension_logued.imagen = informacion['avatar']
+            
             request.user.save()
-            return render(request, "accounts/bienvenido.html", {'mensaje': 'Perfil editado correctamente'})
+            user_extension_logued.save()
+            return redirect ('MiPerfil')
+        else:
+            return render(request, 'accounts/editar_perfil.html', {'miFormulario': miFormulario})
     else:
         miFormulario = UserEditForm(
             initial={
