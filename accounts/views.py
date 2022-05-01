@@ -45,8 +45,11 @@ def login_request(request):
 
 
 def mi_perfil (request):
-    return render (request, "accounts/mi_perfil.html") 
-
+    try:
+        return render (request, "accounts/mi_perfil.html", {'avatar':buscar_url_avatar(request.user)}) 
+    except:
+        return render (request, 'accounts/mi_perfil.html')
+    
 @login_required
 def editar_perfil(request):
 

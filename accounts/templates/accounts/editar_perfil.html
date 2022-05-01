@@ -16,7 +16,7 @@
 					<h3 id="form-title">Editar Perfil</h3>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form method="POST" action="">
+					<form method="POST" action="{% url 'editar_perfil'%}" enctype='multipart/form-data'>
 						<table>
 							{% csrf_token %}
 							<div class="input-group mb-3">
