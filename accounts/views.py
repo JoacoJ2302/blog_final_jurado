@@ -4,6 +4,8 @@ from django.contrib.auth import login, authenticate
 from accounts.forms import UserRegisterForm, UserEditForm
 from posts.models import Post
 from django.contrib.auth.decorators import login_required
+from posts.views import buscar_url_avatar
+
 
 def register(request):
     
@@ -43,7 +45,7 @@ def login_request(request):
 
 
 def mi_perfil (request):
-    return render (request, "accounts/mi_perfil.html")
+    return render (request, "accounts/mi_perfil.html", {'avatar':buscar_url_avatar(request.user)})
 
 @login_required
 def editar_perfil(request):
