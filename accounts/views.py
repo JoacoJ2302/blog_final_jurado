@@ -64,7 +64,7 @@ def editar_perfil(request):
             request.user.last_name = informacion['last_name']
             user_extension_logued.avatar = informacion['avatar']
             request.user.save()
-            return render(request, "accounts/mi_perfil.html", {"mensaje": "Datos de perfil modificados correctamente"})
+            return render(request, "accounts/bienvenido.html", {'mensaje': 'Perfil editado correctamente'})
     else:
         miFormulario = UserEditForm(
             initial={
