@@ -9,6 +9,7 @@ from .forms import ComentarioForm, PostForm
 from django.core.paginator import Paginator, EmptyPage
 from django.http import HttpResponseRedirect
 from accounts.models import Avatar
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def buscar_url_avatar(user):
@@ -83,7 +84,7 @@ class CrearPost(CreateView):
         return contexto
     
 
-class UpdatePost(UpdateView):
+class UpdatePost(LoginRequiredMixin, UpdateView):
 
     model = Post
     form_class= PostForm 
@@ -97,7 +98,7 @@ class UpdatePost(UpdateView):
         return contexto
 
 
-class BorrarPost(DeleteView):
+class BorrarPost(LoginRequiredMixin, DeleteView):
 
     model = Post 
     success_url = "/posts/lista_posts"
